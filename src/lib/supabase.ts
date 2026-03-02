@@ -1,9 +1,20 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+let _supabase: SupabaseClient | null = null
+
+export const supabase = (() => {
+  if (!_supabase && supabaseUrl && supabaseAnonKey) {
+    _supabase = createClient(supabaseUrl, supabaseAnonKey)
+  }
+  // Fallback: create with empty strings (will fail gracefully at runtime, not build time)
+  if (!_supabase) {
+    _supabase = createClient(supabaseUrl || 'https://placeholder.supabase.co', supabaseAnonKey || 'placeholder')
+  }
+  return _supabase
+})()
 
 export type UserRole = 'citizen' | 'admin' | 'superadmin'
 
