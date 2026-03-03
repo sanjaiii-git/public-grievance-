@@ -38,10 +38,10 @@ CREATE TABLE IF NOT EXISTS public.grievances (
     sla_hours INTEGER DEFAULT 72,
     sla_violated BOOLEAN DEFAULT false,
     
-    -- Blockchain
+    -- Integrity Verification
     complaint_hash VARCHAR(256),
-    blockchain_tx_hash VARCHAR(256),
-    blockchain_timestamp TIMESTAMP WITH TIME ZONE,
+    blockchain_tx_hash VARCHAR(256),          -- integrity verification ID
+    blockchain_timestamp TIMESTAMP WITH TIME ZONE,  -- integrity record timestamp
     
     -- Assignment
     assigned_admin_id UUID REFERENCES public.admins(id),

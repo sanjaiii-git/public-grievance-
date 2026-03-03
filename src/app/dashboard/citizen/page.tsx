@@ -423,8 +423,8 @@ export default function CitizenDashboard() {
                 <Shield className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 text-sm mb-1">Blockchain Secured</h4>
-                <p className="text-xs text-gray-600 leading-relaxed">All complaints are hashed and recorded on blockchain for tamper-proof audit trails.</p>
+                <h4 className="font-bold text-gray-900 text-sm mb-1">Integrity Secured</h4>
+                <p className="text-xs text-gray-600 leading-relaxed">All complaints are SHA-256 hashed for tamper-proof audit trails and data integrity verification.</p>
               </div>
             </div>
             <div className="bg-white/60 backdrop-blur-sm rounded-lg p-3 flex items-center justify-between">

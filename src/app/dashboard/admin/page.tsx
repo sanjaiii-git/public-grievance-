@@ -288,7 +288,7 @@ export default function AdminDashboard() {
     finally { setSendingReply(false) }
   }
 
-  // Blockchain hash verify
+  // Integrity hash verify
   const verifyBlockchainHash = async () => {
     if (!selectedGrievance) return
     setVerifyingHash(true)
@@ -1057,7 +1057,7 @@ export default function AdminDashboard() {
                 { key: 'evidence', label: 'Evidence', icon: Image },
                 { key: 'location', label: 'Location', icon: MapPin },
                 { key: 'timeline', label: 'Timeline & Replies', icon: MessageSquare },
-                { key: 'blockchain', label: 'Blockchain', icon: Lock },
+                { key: 'blockchain', label: 'Integrity', icon: Lock },
               ].map(t => {
                 const Icon = t.icon
                 return (
@@ -1303,23 +1303,23 @@ export default function AdminDashboard() {
                 </>
               )}
 
-              {/* === BLOCKCHAIN TAB === */}
+              {/* === INTEGRITY TAB === */}
               {detailTab === 'blockchain' && (
                 <>
                   <div className="space-y-4">
                     <div className="bg-gray-50 rounded-xl p-5">
-                      <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2"><Lock className="w-4 h-4" /> Blockchain Verification (Read-Only)</h4>
+                      <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2"><Lock className="w-4 h-4" /> Integrity Verification (Read-Only)</h4>
                       <div className="space-y-3 text-sm">
                         <div>
-                          <p className="text-xs text-gray-500">Complaint Hash</p>
+                          <p className="text-xs text-gray-500">Complaint Hash (SHA-256)</p>
                           <p className="font-mono text-xs text-gray-700 break-all bg-white rounded p-2 border">{selectedGrievance.complaint_hash || 'Not yet recorded'}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500">Blockchain TX Hash</p>
+                          <p className="text-xs text-gray-500">Verification ID</p>
                           <p className="font-mono text-xs text-gray-700 break-all bg-white rounded p-2 border">{selectedGrievance.blockchain_tx_hash || 'Not yet recorded'}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500">Blockchain Timestamp</p>
+                          <p className="text-xs text-gray-500">Recorded Timestamp</p>
                           <p className="text-gray-700">{selectedGrievance.blockchain_timestamp ? formatDateTime(selectedGrievance.blockchain_timestamp) : 'N/A'}</p>
                         </div>
                       </div>
@@ -1334,14 +1334,14 @@ export default function AdminDashboard() {
                         {hashResult && (
                           <div className={`mt-3 px-4 py-3 rounded-lg ${hashResult === 'match' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
                             <p className={`text-sm font-medium ${hashResult === 'match' ? 'text-green-700' : 'text-red-700'}`}>
-                              {hashResult === 'match' ? '✅ Integrity verified — hash matches blockchain record' : '❌ Hash mismatch — data may have been tampered'}
+                              {hashResult === 'match' ? '✅ Integrity verified — hash matches original record' : '❌ Hash mismatch — data may have been tampered'}
                             </p>
                           </div>
                         )}
                       </div>
                     )}
 
-                    <p className="text-[10px] text-gray-400">Admin cannot modify blockchain entries. This is a read-only verification view.</p>
+                    <p className="text-[10px] text-gray-400">Admin cannot modify integrity records. This is a read-only verification view.</p>
                   </div>
                 </>
               )}

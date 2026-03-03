@@ -1,4 +1,4 @@
-// Utility functions for the Land Records System
+// Utility functions for the Public Grievance Redressal System
 
 // =====================================================
 // AADHAAR & SECURITY
@@ -33,10 +33,10 @@ export function formatPhone(phone: string): string {
 }
 
 // =====================================================
-// BLOCKCHAIN
+// INTEGRITY VERIFICATION
 // =====================================================
 
-// Generate complaint hash
+// Generate complaint hash for tamper-proof verification (SHA-256)
 export async function hashComplaint(data: any): Promise<string> {
   const encoder = new TextEncoder()
   const dataString = JSON.stringify(data)
@@ -45,7 +45,7 @@ export async function hashComplaint(data: any): Promise<string> {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
 }
 
-// Simulate blockchain transaction
+// Generate integrity record with unique hash for audit trail
 export async function createBlockchainRecord(data: any): Promise<{
   txHash: string
   timestamp: string

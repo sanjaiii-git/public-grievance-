@@ -1,5 +1,5 @@
 -- =====================================================
--- LAND RECORDS SYSTEM - SUPABASE DATABASE SCHEMA
+-- PUBLIC GRIEVANCE REDRESSAL SYSTEM - SUPABASE DATABASE SCHEMA
 -- =====================================================
 -- Run these queries in your Supabase SQL Editor
 -- =====================================================

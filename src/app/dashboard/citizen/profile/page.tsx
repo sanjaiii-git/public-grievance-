@@ -189,7 +189,7 @@ export default function ProfilePage() {
           <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-green-600" />
-              <span className="text-sm text-green-700">Blockchain Complaint Records</span>
+              <span className="text-sm text-green-700">Integrity-Verified Complaint Records</span>
             </div>
             <span className="text-xs text-green-600 font-medium">Active</span>
           </div>

@@ -157,8 +157,8 @@ export default function SubmitGrievancePage() {
       const slaHours = getDepartmentSLA(formData.department)
       const slaDeadline = new Date(Date.now() + slaHours * 60 * 60 * 1000).toISOString()
 
-      // Step 5: Create blockchain record
-      addProcessingStep('Creating blockchain record...')
+      // Step 5: Create integrity record
+      addProcessingStep('Generating integrity hash...')
       const complaintHash = await hashComplaint({
         complaintId,
         title: formData.title,
@@ -370,16 +370,16 @@ export default function SubmitGrievancePage() {
               </div>
             )}
 
-            {/* Blockchain Info */}
+            {/* Integrity Record */}
             <div className="border-t border-gray-200 pt-4 mt-4">
-              <h3 className="text-sm font-semibold text-gray-700 mb-3">🔗 Blockchain Receipt</h3>
+              <h3 className="text-sm font-semibold text-gray-700 mb-3">🔗 Integrity Verification</h3>
               <div className="space-y-2">
                 <div>
                   <p className="text-xs text-gray-500">Complaint Hash</p>
                   <p className="text-xs font-mono text-gray-700 break-all">{submissionResult.complaintHash}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">Transaction Hash</p>
+                  <p className="text-xs text-gray-500">Verification ID</p>
                   <p className="text-xs font-mono text-blue-600 break-all">{submissionResult.blockchainTxHash}</p>
                 </div>
               </div>

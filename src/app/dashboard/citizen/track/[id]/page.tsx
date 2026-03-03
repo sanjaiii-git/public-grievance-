@@ -344,10 +344,10 @@ export default function TrackComplaintPage() {
             </div>
           </div>
 
-          {/* Blockchain Proof */}
+          {/* Integrity Verification */}
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
             <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-              <Shield className="w-4 h-4 text-blue-600" /> Blockchain Record
+              <Shield className="w-4 h-4 text-blue-600" /> Integrity Record
             </h3>
             <div className="space-y-3">
               <div>
@@ -361,7 +361,7 @@ export default function TrackComplaintPage() {
                 {copied === 'hash' && <p className="text-xs text-green-600">Copied!</p>}
               </div>
               <div>
-                <p className="text-xs text-gray-500 mb-1">Transaction Hash</p>
+                <p className="text-xs text-gray-500 mb-1">Verification ID</p>
                 <div className="flex items-center gap-1">
                   <p className="text-xs font-mono text-blue-600 truncate flex-1">{grievance.blockchain_tx_hash}</p>
                   <button onClick={() => copyToClipboard(grievance.blockchain_tx_hash, 'tx')} className="text-gray-400 hover:text-blue-600">
